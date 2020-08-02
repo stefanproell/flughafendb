@@ -50,7 +50,7 @@ To view a copy of this license, visit https://creativecommons.org/licenses/by/4.
 
 FlughafenDB. (2015). Stefan Proell, Eva Zangerle, Wolfgang Gassler. www.flughafendb.cc. https://doi.org/10.5281/zenodo.3968361
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969992.svg)](https://doi.org/10.5281/zenodo.3969992)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3968361.svg)](https://doi.org/10.5281/zenodo.3968361)
 
 ## Website
 
