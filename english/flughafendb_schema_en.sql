@@ -1,3 +1,7 @@
+# The Flughafen DB by Stefan Proell, Eva Zangerle, Wolfgang Gassler 
+# is licensed under CC BY 4.0. To view a copy of this license, 
+# visit https://creativecommons.org/licenses/by/4.0
+
 -- MySQL dump 10.16  Distrib 10.1.44-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: flughafendb_large
@@ -21,7 +25,7 @@
 
 DROP TABLE IF EXISTS `airline`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airline` (
   `airline_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(2) NOT NULL,
@@ -31,7 +35,7 @@ CREATE TABLE `airline` (
   UNIQUE KEY `iata_unq` (`iata`),
   KEY `heimat_idx` (`base_airport`),
   CONSTRAINT `fluglinie_ibfk_1` FOREIGN KEY (`base_airport`) REFERENCES `airport` (`airport_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,14 +44,14 @@ CREATE TABLE `airline` (
 
 DROP TABLE IF EXISTS `airplane`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airplane` (
   `airplane_id` int(11) NOT NULL AUTO_INCREMENT,
   `capacity` mediumint(8) unsigned NOT NULL,
   `type_id` int(11) NOT NULL,
   `airline_id` int(11) NOT NULL,
   PRIMARY KEY (`airplane_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5584 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5584 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,14 +60,14 @@ CREATE TABLE `airplane` (
 
 DROP TABLE IF EXISTS `airplane_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airplane_type` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
   `description` text,
   PRIMARY KEY (`type_id`),
   FULLTEXT KEY `bezeichnung_full` (`identifier`,`description`)
-) ENGINE=MyISAM AUTO_INCREMENT=343 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=343 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +76,7 @@ CREATE TABLE `airplane_type` (
 
 DROP TABLE IF EXISTS `airport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport` (
   `airport_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(3) DEFAULT NULL,
@@ -82,7 +86,7 @@ CREATE TABLE `airport` (
   UNIQUE KEY `icao_unq` (`icao`),
   KEY `name_idx` (`name`),
   KEY `iata_idx` (`iata`)
-) ENGINE=InnoDB AUTO_INCREMENT=13598 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +95,7 @@ CREATE TABLE `airport` (
 
 DROP TABLE IF EXISTS `airport_geo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport_geo` (
   `airport_id` smallint(6) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -102,7 +106,7 @@ CREATE TABLE `airport_geo` (
   `geolocation` point NOT NULL,
   KEY `flughafen_idx` (`airport_id`),
   SPATIAL KEY `geolokation_spt` (`geolocation`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,12 +115,12 @@ CREATE TABLE `airport_geo` (
 
 DROP TABLE IF EXISTS `airport_reachable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport_reachable` (
   `airport_id` int(11) NOT NULL,
   `hops` int(11) DEFAULT NULL,
   PRIMARY KEY (`airport_id`)
-) ENGINE=MEMORY DEFAULT CHARSET=latin1;
+) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +129,7 @@ CREATE TABLE `airport_reachable` (
 
 DROP TABLE IF EXISTS `booking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `booking` (
   `booking_id` int(11) NOT NULL AUTO_INCREMENT,
   `flight_id` int(11) NOT NULL,
@@ -138,7 +142,7 @@ CREATE TABLE `booking` (
   KEY `passagier_idx` (`passenger_id`),
   CONSTRAINT `buchung_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`flight_id`),
   CONSTRAINT `buchung_ibfk_2` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55099799 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55099799 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +151,7 @@ CREATE TABLE `booking` (
 
 DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `employee` (
   `employee_id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(100) NOT NULL,
@@ -166,7 +170,7 @@ CREATE TABLE `employee` (
   `password` char(32) DEFAULT NULL,
   PRIMARY KEY (`employee_id`),
   UNIQUE KEY `benutzer_unq` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +179,7 @@ CREATE TABLE `employee` (
 
 DROP TABLE IF EXISTS `flight`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flight` (
   `flight_id` int(11) NOT NULL AUTO_INCREMENT,
   `flightno` char(8) NOT NULL,
@@ -196,7 +200,7 @@ CREATE TABLE `flight` (
   CONSTRAINT `flug_ibfk_2` FOREIGN KEY (`to`) REFERENCES `airport` (`airport_id`),
   CONSTRAINT `flug_ibfk_3` FOREIGN KEY (`airline_id`) REFERENCES `airline` (`airline_id`),
   CONSTRAINT `flug_ibfk_4` FOREIGN KEY (`airplane_id`) REFERENCES `airplane` (`airplane_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=758658 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=758658 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +209,7 @@ CREATE TABLE `flight` (
 
 DROP TABLE IF EXISTS `flight_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flight_log` (
   `log_date` datetime NOT NULL,
   `user` varchar(100) NOT NULL,
@@ -225,7 +229,7 @@ CREATE TABLE `flight_log` (
   `airline_id_old` smallint(6) NOT NULL,
   `airline_id_new` smallint(6) NOT NULL,
   `comment` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +238,7 @@ CREATE TABLE `flight_log` (
 
 DROP TABLE IF EXISTS `flightschedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flightschedule` (
   `flightno` char(8) NOT NULL,
   `from` smallint(6) NOT NULL,
@@ -256,7 +260,7 @@ CREATE TABLE `flightschedule` (
   CONSTRAINT `flugplan_ibfk_1` FOREIGN KEY (`from`) REFERENCES `airport` (`airport_id`),
   CONSTRAINT `flugplan_ibfk_2` FOREIGN KEY (`to`) REFERENCES `airport` (`airport_id`),
   CONSTRAINT `flugplan_ibfk_3` FOREIGN KEY (`airline_id`) REFERENCES `airline` (`airline_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +269,7 @@ CREATE TABLE `flightschedule` (
 
 DROP TABLE IF EXISTS `passenger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `passenger` (
   `passenger_id` int(11) NOT NULL AUTO_INCREMENT,
   `passportno` char(9) NOT NULL,
@@ -273,7 +277,7 @@ CREATE TABLE `passenger` (
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`passenger_id`),
   UNIQUE KEY `pass_unq` (`passportno`)
-) ENGINE=InnoDB AUTO_INCREMENT=36100 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +286,7 @@ CREATE TABLE `passenger` (
 
 DROP TABLE IF EXISTS `passengerdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `passengerdetails` (
   `passenger_id` int(11) NOT NULL,
   `birthdate` date NOT NULL,
@@ -295,7 +299,7 @@ CREATE TABLE `passengerdetails` (
   `telephoneno` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`passenger_id`),
   CONSTRAINT `passagierdetails_ibfk_1` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +308,7 @@ CREATE TABLE `passengerdetails` (
 
 DROP TABLE IF EXISTS `weatherdata`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `weatherdata` (
   `log_date` date NOT NULL,
   `time` time NOT NULL,
@@ -316,7 +320,7 @@ CREATE TABLE `weatherdata` (
   `weather` enum('Nebel-Schneefall','Schneefall','Regen','Regen-Schneefall','Nebel-Regen','Nebel-Regen-Gewitter','Gewitter','Nebel','Regen-Gewitter') DEFAULT NULL,
   `winddirection` smallint(6) NOT NULL,
   PRIMARY KEY (`log_date`,`time`,`station`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -329,3 +333,20 @@ CREATE TABLE `weatherdata` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-08-07  8:48:20
+
+
+ALTER TABLE airline COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE airplane COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE airplane_type COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE airport COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE airport_geo COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE booking COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE employee COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE flight COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE flight_log COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE flightschedule COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE passenger COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE passengerdetails COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE weatherdata COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+ALTER TABLE airport_reachable COMMENT 'Flughafen DB by Stefan Pröll, Eva Zangerle, Wolfgang Gassler is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0';
+

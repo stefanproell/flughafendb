@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `buchung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `buchung` (
   `buchung_id` int(11) NOT NULL AUTO_INCREMENT,
   `flug_id` int(11) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `buchung` (
   KEY `passagier_idx` (`passagier_id`),
   CONSTRAINT `buchung_ibfk_1` FOREIGN KEY (`flug_id`) REFERENCES `flug` (`flug_id`),
   CONSTRAINT `buchung_ibfk_2` FOREIGN KEY (`passagier_id`) REFERENCES `passagier` (`passagier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55099799 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55099799 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `buchung` (
 
 DROP TABLE IF EXISTS `flug`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flug` (
   `flug_id` int(11) NOT NULL AUTO_INCREMENT,
   `flugnr` char(8) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `flug` (
   CONSTRAINT `flug_ibfk_2` FOREIGN KEY (`nach`) REFERENCES `flughafen` (`flughafen_id`),
   CONSTRAINT `flug_ibfk_3` FOREIGN KEY (`fluglinie_id`) REFERENCES `fluglinie` (`fluglinie_id`),
   CONSTRAINT `flug_ibfk_4` FOREIGN KEY (`flugzeug_id`) REFERENCES `flugzeug` (`flugzeug_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=758658 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=758658 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `flug` (
 
 DROP TABLE IF EXISTS `flug_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flug_log` (
   `datum` datetime NOT NULL,
   `benutzer` varchar(100) NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE `flug_log` (
   `fluglinie_id_alt` smallint(6) NOT NULL,
   `fluglinie_id_neu` smallint(6) NOT NULL,
   `kommentar` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `flug_log` (
 
 DROP TABLE IF EXISTS `flughafen`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flughafen` (
   `flughafen_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(3) DEFAULT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `flughafen` (
   UNIQUE KEY `icao_unq` (`icao`),
   KEY `name_idx` (`name`),
   KEY `iata_idx` (`iata`)
-) ENGINE=InnoDB AUTO_INCREMENT=13598 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,12 +122,12 @@ CREATE TABLE `flughafen` (
 
 DROP TABLE IF EXISTS `flughafen_erreichbar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flughafen_erreichbar` (
   `flughafen_id` int(11) NOT NULL,
   `hops` int(11) DEFAULT NULL,
   PRIMARY KEY (`flughafen_id`)
-) ENGINE=MEMORY DEFAULT CHARSET=latin1;
+) ENGINE=MEMORY DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `flughafen_erreichbar` (
 
 DROP TABLE IF EXISTS `flughafen_geo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flughafen_geo` (
   `flughafen_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE `flughafen_geo` (
   KEY `flughafen_idx` (`flughafen_id`),
   SPATIAL KEY `geolokation_spt` (`geolokation`),
   SPATIAL KEY `geolokation` (`geolokation`)
-) ENGINE=MyISAM AUTO_INCREMENT=13598 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13598 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +157,7 @@ CREATE TABLE `flughafen_geo` (
 
 DROP TABLE IF EXISTS `fluglinie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fluglinie` (
   `fluglinie_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(2) NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `fluglinie` (
   UNIQUE KEY `iata_unq` (`iata`),
   KEY `heimat_idx` (`heimat_flughafen`),
   CONSTRAINT `fluglinie_ibfk_1` FOREIGN KEY (`heimat_flughafen`) REFERENCES `flughafen` (`flughafen_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `fluglinie` (
 
 DROP TABLE IF EXISTS `flugplan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flugplan` (
   `flugnr` char(8) NOT NULL,
   `von` smallint(6) NOT NULL,
@@ -198,7 +198,7 @@ CREATE TABLE `flugplan` (
   CONSTRAINT `flugplan_ibfk_1` FOREIGN KEY (`von`) REFERENCES `flughafen` (`flughafen_id`),
   CONSTRAINT `flugplan_ibfk_2` FOREIGN KEY (`nach`) REFERENCES `flughafen` (`flughafen_id`),
   CONSTRAINT `flugplan_ibfk_3` FOREIGN KEY (`fluglinie_id`) REFERENCES `fluglinie` (`fluglinie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,14 +207,14 @@ CREATE TABLE `flugplan` (
 
 DROP TABLE IF EXISTS `flugzeug`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flugzeug` (
   `flugzeug_id` int(11) NOT NULL AUTO_INCREMENT,
   `kapazitaet` mediumint(8) unsigned NOT NULL,
   `typ_id` int(11) NOT NULL,
   `fluglinie_id` int(11) NOT NULL,
   PRIMARY KEY (`flugzeug_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5584 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5584 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,14 +223,14 @@ CREATE TABLE `flugzeug` (
 
 DROP TABLE IF EXISTS `flugzeug_typ`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flugzeug_typ` (
   `typ_id` int(11) NOT NULL AUTO_INCREMENT,
   `bezeichnung` varchar(50) DEFAULT NULL,
   `beschreibung` text,
   PRIMARY KEY (`typ_id`),
   FULLTEXT KEY `idx_fulltext` (`bezeichnung`,`beschreibung`)
-) ENGINE=MyISAM AUTO_INCREMENT=343 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=343 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ CREATE TABLE `flugzeug_typ` (
 
 DROP TABLE IF EXISTS `mitarbeiter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mitarbeiter` (
   `mitarbeiter_id` int(11) NOT NULL AUTO_INCREMENT,
   `vorname` varchar(100) NOT NULL,
@@ -258,7 +258,7 @@ CREATE TABLE `mitarbeiter` (
   `passwort` char(32) DEFAULT NULL,
   PRIMARY KEY (`mitarbeiter_id`),
   UNIQUE KEY `benutzer_unq` (`benutzername`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `mitarbeiter` (
 
 DROP TABLE IF EXISTS `passagier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `passagier` (
   `passagier_id` int(11) NOT NULL AUTO_INCREMENT,
   `passnummer` char(9) NOT NULL,
@@ -275,7 +275,7 @@ CREATE TABLE `passagier` (
   `nachname` varchar(100) NOT NULL,
   PRIMARY KEY (`passagier_id`),
   UNIQUE KEY `pass_unq` (`passnummer`)
-) ENGINE=InnoDB AUTO_INCREMENT=36100 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +284,7 @@ CREATE TABLE `passagier` (
 
 DROP TABLE IF EXISTS `passagierdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `passagierdetails` (
   `passagier_id` int(11) NOT NULL,
   `geburtsdatum` date NOT NULL,
@@ -296,7 +296,7 @@ CREATE TABLE `passagierdetails` (
   `emailadresse` varchar(120) DEFAULT NULL,
   `telefonnummer` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`passagier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +305,7 @@ CREATE TABLE `passagierdetails` (
 
 DROP TABLE IF EXISTS `wetterdaten`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wetterdaten` (
   `datum` date NOT NULL,
   `zeit` time NOT NULL,
@@ -316,7 +316,7 @@ CREATE TABLE `wetterdaten` (
   `wind` decimal(5,2) NOT NULL,
   `wetter` enum('Nebel-Schneefall','Schneefall','Regen','Regen-Schneefall','Nebel-Regen','Nebel-Regen-Gewitter','Gewitter','Nebel','Regen-Gewitter') DEFAULT NULL,
   `windrichtung` smallint(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
