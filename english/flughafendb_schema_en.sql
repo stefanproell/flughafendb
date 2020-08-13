@@ -25,7 +25,7 @@
 
 DROP TABLE IF EXISTS `airline`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airline` (
   `airline_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(2) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `airline` (
 
 DROP TABLE IF EXISTS `airplane`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airplane` (
   `airplane_id` int(11) NOT NULL AUTO_INCREMENT,
   `capacity` mediumint(8) unsigned NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `airplane` (
 
 DROP TABLE IF EXISTS `airplane_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airplane_type` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `airplane_type` (
 
 DROP TABLE IF EXISTS `airport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport` (
   `airport_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `iata` char(3) DEFAULT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `airport` (
 
 DROP TABLE IF EXISTS `airport_geo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport_geo` (
   `airport_id` smallint(6) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE `airport_geo` (
 
 DROP TABLE IF EXISTS `airport_reachable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `airport_reachable` (
   `airport_id` int(11) NOT NULL,
   `hops` int(11) DEFAULT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `airport_reachable` (
 
 DROP TABLE IF EXISTS `booking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `booking` (
   `booking_id` int(11) NOT NULL AUTO_INCREMENT,
   `flight_id` int(11) NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE `booking` (
 
 DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `employee` (
   `employee_id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(100) NOT NULL,
@@ -179,7 +179,7 @@ CREATE TABLE `employee` (
 
 DROP TABLE IF EXISTS `flight`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flight` (
   `flight_id` int(11) NOT NULL AUTO_INCREMENT,
   `flightno` char(8) NOT NULL,
@@ -209,7 +209,7 @@ CREATE TABLE `flight` (
 
 DROP TABLE IF EXISTS `flight_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flight_log` (
   `log_date` datetime NOT NULL,
   `user` varchar(100) NOT NULL,
@@ -238,7 +238,7 @@ CREATE TABLE `flight_log` (
 
 DROP TABLE IF EXISTS `flightschedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `flightschedule` (
   `flightno` char(8) NOT NULL,
   `from` smallint(6) NOT NULL,
@@ -269,7 +269,7 @@ CREATE TABLE `flightschedule` (
 
 DROP TABLE IF EXISTS `passenger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `passenger` (
   `passenger_id` int(11) NOT NULL AUTO_INCREMENT,
   `passportno` char(9) NOT NULL,
@@ -286,7 +286,7 @@ CREATE TABLE `passenger` (
 
 DROP TABLE IF EXISTS `passengerdetails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `passengerdetails` (
   `passenger_id` int(11) NOT NULL,
   `birthdate` date NOT NULL,
@@ -308,7 +308,7 @@ CREATE TABLE `passengerdetails` (
 
 DROP TABLE IF EXISTS `weatherdata`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8mb4mb4 */;
 CREATE TABLE `weatherdata` (
   `log_date` date NOT NULL,
   `time` time NOT NULL,
