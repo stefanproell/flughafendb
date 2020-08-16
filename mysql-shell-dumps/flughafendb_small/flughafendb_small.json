@@ -1,0 +1,41 @@
+{
+    "schema": "flughafendb_small",
+    "includesDdl": true,
+    "includesData": true,
+    "tables": [
+        "airline",
+        "airplane",
+        "airplane_type",
+        "airport",
+        "airport_geo",
+        "airport_reachable",
+        "booking",
+        "employee",
+        "flight",
+        "flight_log",
+        "flightschedule",
+        "passenger",
+        "passengerdetails",
+        "weatherdata"
+    ],
+    "views": [],
+    "events": [],
+    "functions": [],
+    "procedures": [],
+    "basenames": {
+        "airline": "flughafendb_small@airline",
+        "airplane": "flughafendb_small@airplane",
+        "airplane_type": "flughafendb_small@airplane_type",
+        "airport": "flughafendb_small@airport",
+        "airport_geo": "flughafendb_small@airport_geo",
+        "airport_reachable": "flughafendb_small@airport_reachable",
+        "booking": "flughafendb_small@booking",
+        "employee": "flughafendb_small@employee",
+        "flight": "flughafendb_small@flight",
+        "flight_log": "flughafendb_small@flight_log",
+        "flightschedule": "flughafendb_small@flightschedule",
+        "passenger": "flughafendb_small@passenger",
+        "passengerdetails": "flughafendb_small@passengerdetails",
+        "weatherdata": "flughafendb_small@weatherdata"
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "options": {
+        "schema": "flughafendb_large",
+        "table": "airport_geo",
+        "columns": [
+            "airport_id",
+            "name",
+            "city",
+            "country",
+            "latitude",
+            "longitude",
+            "geolocation"
+        ],
+        "decodeColumns": {
+            "geolocation": "FROM_BASE64"
+        },
+        "primaryIndex": "",
+        "compression": "zstd",
+        "defaultCharacterSet": "utf8mb4",
+        "fieldsTerminatedBy": "\t",
+        "fieldsEnclosedBy": "",
+        "fieldsOptionallyEnclosed": false,
+        "fieldsEscapedBy": "\\",
+        "linesTerminatedBy": "\n"
+    },
+    "triggers": [],
+    "includesData": true,
+    "includesDdl": true,
+    "extension": "tsv.zst",
+    "chunking": false
+}

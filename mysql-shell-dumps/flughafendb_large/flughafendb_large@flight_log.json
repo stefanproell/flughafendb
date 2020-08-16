@@ -1,0 +1,39 @@
+{
+    "options": {
+        "schema": "flughafendb_large",
+        "table": "flight_log",
+        "columns": [
+            "log_date",
+            "user",
+            "flight_id",
+            "flightno_old",
+            "flightno_new",
+            "from_old",
+            "to_old",
+            "from_new",
+            "to_new",
+            "departure_old",
+            "arrival_old",
+            "departure_new",
+            "arrival_new",
+            "airplane_id_old",
+            "airplane_id_new",
+            "airline_id_old",
+            "airline_id_new",
+            "comment"
+        ],
+        "primaryIndex": "",
+        "compression": "zstd",
+        "defaultCharacterSet": "utf8mb4",
+        "fieldsTerminatedBy": "\t",
+        "fieldsEnclosedBy": "",
+        "fieldsOptionallyEnclosed": false,
+        "fieldsEscapedBy": "\\",
+        "linesTerminatedBy": "\n"
+    },
+    "triggers": [],
+    "includesData": true,
+    "includesDdl": true,
+    "extension": "tsv.zst",
+    "chunking": false
+}

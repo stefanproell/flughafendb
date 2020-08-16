@@ -1,0 +1,22 @@
+{
+    "end": "2020-08-16 16:27:38",
+    "dataBytes": 2034301962,
+    "tableDataBytes": {
+        "flughafendb_large": {
+            "weatherdata": 260189117,
+            "airline": 3158,
+            "airplane_type": 461366,
+            "airplane": 82258,
+            "airport_geo": 964758,
+            "flight": 33336131,
+            "passengerdetails": 3795407,
+            "airport_reachable": 0,
+            "flight_log": 0,
+            "airport": 250014,
+            "employee": 177645,
+            "booking": 1733524434,
+            "passenger": 999778,
+            "flightschedule": 517896
+        }
+    }
+}

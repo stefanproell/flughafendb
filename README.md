@@ -52,9 +52,10 @@ The smaller set can be imported quickly, the larger one might take some time dep
 |weatherdata                |4626432    |
 
 
-## Importing
+## Importing using mysqldump
 
-We user gzip to reduce the size of the datasets and split the larger set in smaller chunks.
+The traditional way of importing a dataset is using `mysqldump`.
+We used gzip to reduce the size of the datasets and split the larger set in smaller chunks.
 You can use the following steps to load the dataset.
 
 ````
@@ -71,6 +72,33 @@ mysql -u your-user -h 127.0.0.1 -e "CREATE DATABASE flughafendb_large;"
 zcat ./english/flughafendb_original_gross.sql.gz | mysql -u root -h 127.0.0.1 flughafendb_large
 
 ````
+
+## Importing and exporting using MySQL Shell
+
+There exists a new tool called `MySQL Shell` which can import data using parallel threads. 
+This tool is much faster than `mysqldump` and it is compatible with `MySQL 5.7` and `MySQL 8`.
+A blog post about the performance can be found on [mysqlserverteam.com](https://mysqlserverteam.com/mysql-shell-dump-load-part-1-demo/).
+The official documentation is [here](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-load-dump.html).
+
+The folder `mysql-shell-dumps` contains data dumps that have been created using MySQL Shell 8.0.21.
+
+### Import FlughafenDB using MySQL Shell
+
+The folder containing the large data set is `./mysql-shell-dumps/flughafendb_large`.
+The folder `docker` of this repository contains a `docker-compose.yml` file you can use for starting a fresh `MySQL 8` container.
+Connect to the database and create the database with `CREATE DATABASE flughafendb_large;`
+
+Then start `mysqlsh` for instance like this: `mysqlsh root@127.0.0.1:3308` and run the following command.
+`util.loadDump("./mysql-shell-dumps/flughafendb_large", {threads: 4})`
+
+This will import the dump using 4 parallel threads.
+
+### Create a new dump
+
+You can create a `MySQL Shell` dump from an existing database as follows:
+
+`util.dumpSchemas(["flughafendb_large"],"/tmp/flughafendb_large", {threads: 4, bytesPerChunk: "200M"})`
+
 
 # Der FlughafenDB Datensatz
 

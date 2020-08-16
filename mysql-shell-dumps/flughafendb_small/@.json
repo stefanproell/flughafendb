@@ -1,0 +1,19 @@
+{
+    "dumper": "mysqlsh Ver 8.0.21 for Linux on x86_64 - for MySQL 8.0.21 (MySQL Community Server (GPL))",
+    "version": "1.0.0",
+    "schemas": [
+        "flughafendb_small"
+    ],
+    "basenames": {
+        "flughafendb_small": "flughafendb_small"
+    },
+    "defaultCharacterSet": "utf8mb4",
+    "tzUtc": true,
+    "user": "root",
+    "hostname": "xps",
+    "server": "a0a3b567d1d7",
+    "serverVersion": "8.0.21",
+    "gtidExecuted": "",
+    "consistent": true,
+    "begin": "2020-08-15 17:47:45"
+}
