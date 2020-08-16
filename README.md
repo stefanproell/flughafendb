@@ -86,12 +86,12 @@ The folder `mysql-shell-dumps` contains data dumps that have been created using 
 
 The folder containing the large data set is `./mysql-shell-dumps/flughafendb_large`.
 The folder `docker` of this repository contains a `docker-compose.yml` file you can use for starting a fresh `MySQL 8` container.
-Connect to the database and create the database with `CREATE DATABASE flughafendb_large;`
+Connect to the database and create the database with `CREATE DATABASE flughafendb_large;` and enable the load from local files `ET GLOBAL local_infile=ON;`.
 
 Then start `mysqlsh` for instance like this: `mysqlsh root@127.0.0.1:3308` and run the following command.
 `util.loadDump("./mysql-shell-dumps/flughafendb_large", {threads: 4})`
 
-This will import the dump using 4 parallel threads.
+This will import the dump using 4 parallel threads. 
 
 ### Create a new dump
 
