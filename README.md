@@ -9,6 +9,10 @@ The dataset is available in English and in German. A German description is avail
 There are two sets with the same schema but different amounts of data. 
 The smaller set can be imported quickly, the larger one might take some time depending on your hardware.
 
+# Showcases
+
+- This dataset is also used for learning purposes by [MySQL / Oracle](https://dev.mysql.com/doc/airportdb/en/).
+
 # The FlughafenDB Dataset
 
 ## The smaller FlughafenDB dataset
