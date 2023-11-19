@@ -103,6 +103,9 @@ You can create a `MySQL Shell` dump from an existing database as follows:
 
 `util.dumpSchemas(["flughafendb_large"],"/tmp/flughafendb_large", {threads: 4, bytesPerChunk: "200M"})`
 
+### Apply updates
+
+Smaller updates and bug fixes can be applied by loading one of the files `english/bug_fixes_flughafendb_[large|small].sql` after importing the dataset.
 
 # Der FlughafenDB Datensatz
 
@@ -143,6 +146,11 @@ You can create a `MySQL Shell` dump from an existing database as follows:
 |passagier                  |36346      |
 |passagierdetails           |35785      |
 |wetterdaten                |4626432    |
+
+### Apply updates
+
+Kleinere Updates und Bugfixes können durch das Laden des passenden Skriptes eingespielt werden, nachdem das Datenset geladen wurde: `./deutsch/bug_fixes_flughafendb_[klein|gross].sql`.
+
 
 # License
 
