@@ -1,0 +1,26 @@
+version: '3'
+services:
+  database:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'flughafendb'
+      MYSQL_USER: 'flughafen-user'
+      MYSQL_PASSWORD: 'secret'      
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ${PWD}/deutsch/flughafendb_klein.sql.gz:/docker-entrypoint-initdb.d/0.sql.gz
+    command:
+      - "mysqld"
+      - "--innodb_buffer_pool_size=8000M"
+      - "--max_allowed_packet=512M"
+      - "--innodb_log_file_size=1G"
+      - "--innodb_write_io_threads=8"
+      - "--innodb_flush_log_at_trx_commit=0"
+      - "--innodb_doublewrite=0"
+      - "--innodb_fast_shutdown=0"
