@@ -151,6 +151,13 @@ Smaller updates and bug fixes can be applied by loading one of the files `englis
 
 Kleinere Updates und Bugfixes können durch das Laden des passenden Skriptes eingespielt werden, nachdem das Datenset geladen wurde: `./deutsch/bug_fixes_flughafendb_[klein|gross].sql`.
 
+# Docker Compose
+
+The directory `docker` contains a `docker-compose.yml` file which you can use to experiment with the database.
+The Docker Compose file automatically imports the `./deutsch/flughafendb_klein.sql.gz` database dump.
+It also applies some settings for faster importing which should not be used in production.
+Adapt the file to your needs, the following commands show how to start a MySQL container from the Git base directory:
+`docker compose -f ./docker/docker-compose.yml up`.
 
 # License
 
