@@ -52,3 +52,34 @@ ALTER TABLE
         'fog',
         'rain-thunderstorm'
         );
+
+-- Fix Issue https://github.com/stefanproell/flughafendb/issues/5
+
+ALTER TABLE
+    employee
+    MODIFY COLUMN
+        department ENUM (
+          'Buchhaltung',
+          'Logistik',
+          'Flugfeld',
+          'marketing',
+          'accounting',
+          'management',
+          'logistics',
+          'airfield');
+
+UPDATE employee SET department='marketing' WHERE department='Marketing';
+UPDATE employee SET department='accounting' WHERE department='Buchhaltung';
+UPDATE employee SET department='management' WHERE department='Management';
+UPDATE employee SET department='logistics' WHERE department='Logistik';
+UPDATE employee SET department='airfield' WHERE department='Flugfeld';
+
+ALTER TABLE
+    employee
+    MODIFY COLUMN
+        department ENUM (
+          'marketing',
+          'accounting',
+          'management',
+          'logistics',
+          'airfield');
